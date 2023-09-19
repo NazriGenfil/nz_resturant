@@ -9,6 +9,7 @@ legacyversion '1.9.1'
 
 shared_scripts{
 	'@es_extended/imports.lua',
+	'@ox_lib/init.lua',
 	'config.lua',
 	'locales/*.lua',
 } 

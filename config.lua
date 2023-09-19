@@ -1,29 +1,66 @@
 config = {} or config
 
-config.location = vec4()
+config.debug = true
+
+config.location = vec4(-1174.9675, -883.5522, 13.9619, 30.5904)
+
+config.drinkLocation = {
+    {
+        name = "drik1", -- name cannot be same with other 
+        coords = vec3(-1199.98, -895.08, 14.25),
+        size = vec3(1.1, 1.25, 1.25),
+        rotation = 305.0,
+    },
+    {
+        name = "drink2",
+        coords = vec3(-1199.26, -895.95, 14.4),
+        size = vec3(1.1, 1.0, 0.95),
+        rotation = 304.0,
+    },
+}
+
+config.PrepLocation = {
+    {
+        name = "preplocation1", -- name cannot be same with other
+        coords = vec3(-1199.15, -902.76, 13.8),
+        size = vec3(0.9, 2.4, 1),
+        rotation = 32.5,
+    },
+}
+
+config.OvenLocation = {
+    {
+        name = "oven",
+        coords = vec3(-1201.64, -899.02, 13.6),
+        size = vec3(2.5, 1, 1.0),
+        rotation = 304.5,
+    },
+}
 
 config.drink = {
-    [1] = {
+    {
         label = "Water", 
         description = "Water Bottle", 
         item = "water_bottle", --item that will be given
+        image = "",
         required = {}, -- required items to make (empty if no items required)
         progressbar = "Grabbing Water", -- text to display on progressbar
         progresstime = 5000, -- time required to make in milliseconds
         dictionary = 'amb@prop_human_bbq@male@idle_a', --dictionary name for animation
         animname = "idle_b", --animation name
     },
-    [2] = {
+    {
         label = "Orange Juice", 
         description = "Orange Juice", 
         item = "orangejuice", --item that will be given
+        image = "",
         required = {}, -- required items to make (empty if no items required)
         progressbar = "Grabbing Juice", -- text to display on progressbar
         progresstime = 5000, -- time required to make in milliseconds
         dictionary = 'amb@prop_human_bbq@male@idle_a', --dictionary name for animation
         animname = "idle_b", --animation name
     },
-    [3] = {
+    {
         label = "Hot Tea", 
         description = "Oolong Tea", 
         item = "oolongtea", --item that will be given
@@ -33,7 +70,7 @@ config.drink = {
         dictionary = 'amb@prop_human_bbq@male@idle_a', --dictionary name for animation
         animname = "idle_b", --animation name
     },
-    [4] = {
+    {
         label = "Ice Tea", 
         description = "Milk Tea", 
         item = "milktea", --item that will be given
@@ -43,7 +80,7 @@ config.drink = {
         dictionary = 'amb@prop_human_bbq@male@idle_a', --dictionary name for animation
         animname = "idle_b", --animation name
     },
-    [5] = {
+    {
         label = "Alcohol", 
         description = "Chivas with Green Tea", 
         item = "chivastea", --item that will be given
