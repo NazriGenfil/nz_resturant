@@ -2,7 +2,11 @@ config = {} or config
 
 config.debug = true
 
-config.location = vec4(-1174.9675, -883.5522, 13.9619, 30.5904)
+config.location = {
+    vec4(-1174.9675, -883.5522, 13.9619, 30.5904),
+}
+config.name = "Pedagang"
+config.blipSprite = 513
 
 config.drinkLocation = {
     {

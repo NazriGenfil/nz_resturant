@@ -162,6 +162,21 @@ SetupDrinkTarget = function()
     end
 end
 
+SetupBlips = function()
+    for k, v in pairs(config.location) do
+        blip = AddBlipForCoord(v.x, v.y, v.z)
+        SetBlipSprite(blip, config.blipSprite)
+        SetBlipDisplay(blip, 4)
+        SetBlipScale(blip, 0.6)
+        SetBlipAsShortRange(blip, true)
+        SetBlipColour(blip, 49)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentSubstringPlayerName(config.name)
+        EndTextCommandSetBlipName(blip)
+    end
+end
+
+-- event handlers
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
     SetupPrepLocation()
@@ -176,6 +191,7 @@ AddEventHandler('onResourceStart', function(resourceName)
     SetupPrepLocation()
     SetupDrinkTarget()
     SetupOvenLocation()
+    SetupBlips()
 end)
 
 AddEventHandler('onResourceStop', function(resourceName)
