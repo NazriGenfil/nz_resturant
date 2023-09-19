@@ -11,7 +11,8 @@ oven = function()
             image = v.image,
             serverEvent = 'nz_drink:server:giveItem',
             args = {
-                v.item
+                v.item,
+                v.ammount
             }
         }
     end
@@ -35,7 +36,8 @@ Prep = function()
             image = v.image,
             serverEvent = 'nz_drink:server:giveItem',
             args = {
-                v.item
+                v.item,
+                v.ammount
             }
         }
     end
@@ -59,7 +61,8 @@ Drinks = function()
             image = v.image,
             serverEvent = 'nz_drink:server:giveItem',
             args = {
-                v.item
+                v.item,
+                v.ammount
             }
         }
     end

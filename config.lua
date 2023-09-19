@@ -7,6 +7,7 @@ config.location = {
 }
 config.name = "Pedagang"
 config.blipSprite = 513
+config.jobname = "pedagang"
 
 config.drinkLocation = {
     {
@@ -47,6 +48,7 @@ config.drink = {
         description = "Water Bottle", 
         item = "water_bottle", --item that will be given
         image = "",
+        ammount = 1,
         required = {}, -- required items to make (empty if no items required)
         progressbar = "Grabbing Water", -- text to display on progressbar
         progresstime = 5000, -- time required to make in milliseconds
@@ -58,6 +60,7 @@ config.drink = {
         description = "Orange Juice", 
         item = "orangejuice", --item that will be given
         image = "",
+        ammount = 1,
         required = {}, -- required items to make (empty if no items required)
         progressbar = "Grabbing Juice", -- text to display on progressbar
         progresstime = 5000, -- time required to make in milliseconds
@@ -71,6 +74,7 @@ config.prep = {
         label = "Make Seasoning", 
         description = "Onion | Salt | Papper ", 
         item = "seasoning", --item that will be given
+        ammount = 1,
         required = {
             [1] = {itemName = "onion", amount = 1},
             [2] = {itemName = "salt", amount = 1},
@@ -85,6 +89,7 @@ config.prep = {
         label = "Make Fried Seasoning", 
         description = "Onion [2] | Chilly [2] | Oil | Salt | Papper", 
         item = "friedseasoning", --item that will be given
+        ammount = 1,
         required = {
             [1] = {itemName = "onion", amount = 2},
             [2] = {itemName = "chilly", amount = 2},
@@ -104,6 +109,7 @@ config.oven = {
         label = "Fried Rice with Egg", 
         description = "Rice | Fried Seasoning | Egg", 
         item = "friendrice", --item that will be given
+        ammount = 1,
         required = {
             [1] = {itemName = "rice", amount = 1},
             [2] = {itemName = "friedseasoning", amount = 1},
@@ -118,6 +124,7 @@ config.oven = {
         label = "Fried Noodles with Egg", 
         description = "Noodle | Fried Seasoning | Egg", 
         item = "friednoodle", --item that will be given
+        ammount = 1,
         required = {
             [1] = {itemName = "noodle", amount = 1},
             [2] = {itemName = "friedseasoning", amount = 1},
