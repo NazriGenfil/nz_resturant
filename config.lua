@@ -1,0 +1,1 @@
+config = {} or config
