@@ -1,24 +1,76 @@
 local xPlayer = nil
 
 -- function 
-Drinks = function()
-    lib.registerContext({
-        id = 'DrinksMenu',
-        title = 'Pilih Menu Pembuatan',
-        options = {,
-          {
-            title = 'Example button',
-            description = 'Example button description',
-            icon = 'circle',
-            image = 'https://media.discordapp.net/attachments/1151160645937528942/1153548417155473468/34361079-c79e-4119-b582-9fc9a1febd4e.jpg?width=274&height=488',
-            onSelect = function()
-              print("Pressed the button!")
-            end,
-          },
+oven = function()
+    local Menus = {}
+    for k,v in pairs(config.oven) do
+        Menus[#Menus + 1] = {
+            id = k,
+            title = v.label,
+            description = v.description,
+            image = v.image,
+            serverEvent = 'nz_drink:server:giveItem',
+            args = {
+                v.item
+            }
         }
-      }
-    )
-    lib.showContext('DrinksMenu')      
+    end
+
+    lib.registerContext({
+        id = 'Prep_Menus',
+        title = 'Pilih Menu',
+        options = Menus
+    })
+    
+    lib.showContext('Prep_Menus')      
+end
+
+Prep = function()
+    local Menus = {}
+    for k,v in pairs(config.prep) do
+        Menus[#Menus + 1] = {
+            id = k,
+            title = v.label,
+            description = v.description,
+            image = v.image,
+            serverEvent = 'nz_drink:server:giveItem',
+            args = {
+                v.item
+            }
+        }
+    end
+
+    lib.registerContext({
+        id = 'Prep_Menus',
+        title = 'Pilih Menu',
+        options = Menus
+    })
+    
+    lib.showContext('Prep_Menus')      
+end
+
+Drinks = function()
+    local drinkMenus = {}
+    for k,v in pairs(config.drink) do
+        drinkMenus[#drinkMenus + 1] = {
+            id = k,
+            title = v.label,
+            description = v.description,
+            image = v.image,
+            serverEvent = 'nz_drink:server:giveItem',
+            args = {
+                v.item
+            }
+        }
+    end
+
+    lib.registerContext({
+        id = 'Drink_Menus',
+        title = 'Pilih Menu',
+        options = drinkMenus
+    })
+    
+    lib.showContext('Drink_Menus')      
 end
 
 RemoveTarget = function()
@@ -52,7 +104,7 @@ SetupOvenLocation = function()
                     icon = "fas fa-utensils",
                     distance = 2.0,
                     onSelect = function()
-                        Drinks()
+                        oven()
                     end
                 }
             }
@@ -77,7 +129,7 @@ SetupPrepLocation = function()
                     icon = "fas fa-utensils",
                     distance = 2.0,
                     onSelect = function()
-                        Drinks()
+                        Prep()
                     end
                 }
             }
