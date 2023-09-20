@@ -3,8 +3,8 @@ local ox_inventory = exports.ox_inventory
 RegisterNetEvent("nz_restaurant:server:giveDrink", function(item, giveitem)
     local src = source
 	local xPlayer = ESX.GetPlayerFromId(src)
-    -- if xPlayer.getJob().label ~= config.jobname then return end
-	print(item, giveitem)
+    if xPlayer.getJob().name ~= config.jobname then return end
+
     if exports.ox_inventory:CanCarryItem(src, item, giveitem) then
         exports.ox_inventory:AddItem(src, item, giveitem)
     end
@@ -19,7 +19,9 @@ end)
 
 RegisterNetEvent("nz_restaurant:server:cook", function(items, giveitem, giveAmount)
     local src = source
-    local Player = ESX.GetPlayerFromId(src)
+    local xPlayer = ESX.GetPlayerFromId(src)
+    if xPlayer.getJob().name ~= config.jobname then return end
+
     removedItems = {}
     local removed = true
     for k, v in pairs(items) do
@@ -67,8 +69,10 @@ RegisterNetEvent("nz_restaurant:server:cook", function(items, giveitem, giveAmou
 end)
 
 lib.callback.register('nz_drink:callback:ingredient', function(source, required)
-    -- if xPlayer.getJob().name ~= config.jobname then return false end
-    local xPlayer = ESX.GetPlayerFromId(source)
+    src = source
+    local xPlayer = ESX.GetPlayerFromId(src)
+    if xPlayer.getJob().name ~= config.jobname then return end
+
     local hasItems = true
 
     for k, v in pairs(required) do

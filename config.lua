@@ -5,7 +5,6 @@ config.debug = true
 config.location = {
     vec4(-1174.9675, -883.5522, 13.9619, 30.5904),
 }
-config.name = "Pedagang"
 config.blipSprite = 513
 config.jobname = "pedagang"
 
@@ -47,7 +46,7 @@ config.drink = {
         label = "Water", 
         description = "Water Bottle", 
         item = "water", --item that will be given
-        image = "",
+        image = "https://media.discordapp.net/attachments/1151160645937528942/1154037050832597062/RDS_HTC_Products_481657_image_B608_422143147.png?width=488&height=488",
         amount = 1,
         required = {}, -- required items to make (empty if no items required)
         progressbar = "Grabbing Water", -- text to display on progressbar

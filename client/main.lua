@@ -3,12 +3,14 @@ local xPlayer = nil
 -- function 
 ProcesesCook = function(item, amount, required, progressbar, progresstime, dictionary, animname, tipe)
     print(json.encode(required))
-    returnValue = lib.callback.await('nz_drink:callback:ingredient', false, required)
-    if not returnValue then return lib.notify({
-        title = 'Kamu kekurangan bahan baku',
-        description = 'Harap siapkan bahan baku terlebih dahulu',
-        type = 'error'
-    }) end
+    if tipe ~= 'drink' then
+        returnValue = lib.callback.await('nz_drink:callback:ingredient', false, required)
+        if not returnValue then return lib.notify({
+            title = 'Kamu kekurangan bahan baku',
+            description = 'Harap siapkan bahan baku terlebih dahulu',
+            type = 'error'
+        }) end
+    end
 
     local ped = PlayerPedId()
     local playerPed = PlayerPedId()
@@ -149,6 +151,7 @@ SetupOvenLocation = function()
                     label = "Masak makanan",
                     icon = "fas fa-utensils",
                     distance = 2.0,
+                    groups = { [config.jobname] = 0},
                     onSelect = function()
                         oven()
                     end
@@ -174,6 +177,7 @@ SetupPrepLocation = function()
                     label = "Persiapkan bahan makanan",
                     icon = "fas fa-utensils",
                     distance = 2.0,
+                    groups = { [config.jobname] = 0},
                     onSelect = function()
                         Prep()
                     end
@@ -199,6 +203,7 @@ SetupDrinkTarget = function()
                     label = "Ambil minuman",
                     icon = "fas fa-coffee",
                     distance = 2.0,
+                    groups = { [config.jobname] = 0},
                     onSelect = function()
                         Drinks()
                     end
