@@ -46,7 +46,7 @@ config.drink = {
     {
         label = "Water", 
         description = "Water Bottle", 
-        item = "water_bottle", --item that will be given
+        item = "water", --item that will be given
         image = "",
         amount = 1,
         required = {}, -- required items to make (empty if no items required)

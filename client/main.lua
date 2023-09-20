@@ -1,7 +1,7 @@
 local xPlayer = nil
 
 -- function 
-ProcesesCook = function(item, amount, required, progressbar, progresstime, dictionary, animname)
+ProcesesCook = function(item, amount, required, progressbar, progresstime, dictionary, animname, tipe)
     print(json.encode(required))
     returnValue = lib.callback.await('nz_drink:callback:ingredient', false, required)
     if not returnValue then return lib.notify({
@@ -13,19 +13,25 @@ ProcesesCook = function(item, amount, required, progressbar, progresstime, dicti
     local ped = PlayerPedId()
     local playerPed = PlayerPedId()
     local src = source 
-    if lib.progressBar({
+    FreezeEntityPosition(playerPed, true)
+    if lib.progressCircle({
         duration = progresstime,
         label = progressbar,
         useWhileDead = false,
         canCancel = false,
-        disable = {
-            car = true,
-        },
         anim = {
             dict = dictionary,
             clip = animname
         },
-    }) then print('Do stuff when complete') else print('Do stuff when cancelled') end    
+    }) then 
+        FreezeEntityPosition(playerPed, false)
+        if tipe == "drink" then
+            print(item, amount)
+            TriggerServerEvent("nz_restaurant:server:giveDrink", item, amount)
+        elseif tipe == "cook" then 
+            TriggerServerEvent("nz_restaurant:server:cook", required, item, amount)
+        end
+    end    
 
 end
 
@@ -39,7 +45,7 @@ oven = function()
             image = v.image,
             -- serverEvent = 'nz_drink:server:giveItem',
             onSelect = function()
-                ProcesesCook(v.item, v.amount, v.required, v.progressbar, v.progresstime, v.dictionary, v.animname)
+                ProcesesCook(v.item, v.amount, v.required, v.progressbar, v.progresstime, v.dictionary, v.animname, "cook")
             end,
             --[[args = {
                 v.item,
@@ -67,7 +73,7 @@ Prep = function()
             image = v.image,
             -- serverEvent = 'nz_drink:server:giveItem',
             onSelect = function()
-                ProcesesCook(v.item, v.amount, v.required, v.progressbar, v.progresstime, v.dictionary, v.animname)
+                ProcesesCook(v.item, v.amount, v.required, v.progressbar, v.progresstime, v.dictionary, v.animname, "cook")
             end,
             --[[args = {
                 v.item,
@@ -93,11 +99,14 @@ Drinks = function()
             title = v.label,
             description = v.description,
             image = v.image,
-            serverEvent = 'nz_drink:server:giveItem',
-            args = {
+            -- serverEvent = 'nz_drink:server:giveItem',
+            onSelect = function()
+                ProcesesCook(v.item, v.amount, v.required, v.progressbar, v.progresstime, v.dictionary, v.animname, "drink")
+            end,
+            --[[args = {
                 v.item,
                 v.amount
-            }
+            }]]
         }
     end
 
