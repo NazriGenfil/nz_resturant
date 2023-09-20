@@ -7,7 +7,7 @@ config.location = {
 }
 config.blipSprite = 513
 config.jobname = "pedagang"
-config.maxGrade = 3
+config.maxGrade = 2
 
 config.bossAction = {
     coords = vec3(-1206.93, -891.91, 14.6),
