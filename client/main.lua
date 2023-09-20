@@ -12,7 +12,7 @@ oven = function()
             serverEvent = 'nz_drink:server:giveItem',
             args = {
                 v.item,
-                v.ammount
+                v.amount
             }
         }
     end
@@ -37,7 +37,7 @@ Prep = function()
             serverEvent = 'nz_drink:server:giveItem',
             args = {
                 v.item,
-                v.ammount
+                v.amount
             }
         }
     end
@@ -62,7 +62,7 @@ Drinks = function()
             serverEvent = 'nz_drink:server:giveItem',
             args = {
                 v.item,
-                v.ammount
+                v.amount
             }
         }
     end
