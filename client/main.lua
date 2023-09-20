@@ -213,6 +213,31 @@ SetupDrinkTarget = function()
     end
 end
 
+SetupBossTarget = function()
+    exports.ox_target:addBoxZone({
+        name = 'boss_action',
+        coords = config.bossAction.coords,
+        size = config.bossAction.size,
+        rotation = config.bossAction.rotation,
+        debug = config.bossAction.debug,
+        thickness = 2,
+        options = {
+            {
+                name = 'boss_action_target',
+                label = "Boss Menu",
+                icon = "fas fa-coffee",
+                distance = 2.0,
+                groups = { [config.jobname] = config.maxGrade},
+                onSelect = function()
+                    TriggerEvent('esx_society:openBossMenu', 'pedagang', function(data, menu)
+                        menu.close()
+                    end, { wash = false })
+                end
+            }
+        }
+    })
+end
+
 SetupBlips = function()
     for k, v in pairs(config.location) do
         blip = AddBlipForCoord(v.x, v.y, v.z)
@@ -233,6 +258,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
     SetupPrepLocation()
     SetupDrinkTarget()
     SetupOvenLocation()
+    SetupBossTarget()
 	ESX.PlayerData = xPlayer
 	ESX.PlayerLoaded = true
 end)
@@ -243,6 +269,7 @@ AddEventHandler('onResourceStart', function(resourceName)
     SetupDrinkTarget()
     SetupOvenLocation()
     SetupBlips()
+    SetupBossTarget()
 end)
 
 AddEventHandler('onResourceStop', function(resourceName)

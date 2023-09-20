@@ -7,6 +7,14 @@ config.location = {
 }
 config.blipSprite = 513
 config.jobname = "pedagang"
+config.maxGrade = 3
+
+config.bossAction = {
+    coords = vec3(-1206.93, -891.91, 14.6),
+    size = vec3(0.5, 0.7, 0.8),
+	rotation = 34.0,
+    debug = true
+}
 
 config.drinkLocation = {
     {
