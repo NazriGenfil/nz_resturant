@@ -76,9 +76,9 @@ config.prep = {
         item = "seasoning", --item that will be given
         amount = 1,
         required = {
-            [1] = {itemName = "onion", amount = 1},
-            [2] = {itemName = "salt", amount = 1},
-            [3] = {itemName = "papper", amount = 1},
+            {itemName = "onion", amount = 1},
+            {itemName = "salt", amount = 1},
+            {itemName = "papper", amount = 1},
         },
         progressbar = "Making Seasoning", -- text to display on progressbar
         progresstime = 10000, -- in milliseconds
@@ -91,11 +91,11 @@ config.prep = {
         item = "friedseasoning", --item that will be given
         amount = 1,
         required = {
-            [1] = {itemName = "onion", amount = 2},
-            [2] = {itemName = "chilly", amount = 2},
-            [3] = {itemName = "oil", amount = 1},
-            [4] = {itemName = "salt", amount = 1},
-            [5] = {itemName = "papper", amount = 1},
+            {itemName = "onion", amount = 2},
+            {itemName = "chilly", amount = 2},
+            {itemName = "oil", amount = 1},
+            {itemName = "salt", amount = 1},
+            {itemName = "papper", amount = 1},
         },
         progressbar = "Making Fried Seasoning", -- text to display on progressbar
         progresstime = 10000, -- in milliseconds
@@ -111,9 +111,9 @@ config.oven = {
         item = "friendrice", --item that will be given
         amount = 1,
         required = {
-            [1] = {itemName = "rice", amount = 1},
-            [2] = {itemName = "friedseasoning", amount = 1},
-            [3] = {itemName = "egg", amount = 1},
+            {itemName = "rice", amount = 1},
+            {itemName = "friedseasoning", amount = 1},
+            {itemName = "egg", amount = 1},
         }, -- required items to make
         progressbar = "Making Fried Rice", -- text to display on progressbar
         progresstime = 15000, -- in milliseconds
@@ -126,9 +126,9 @@ config.oven = {
         item = "friednoodle", --item that will be given
         amount = 1,
         required = {
-            [1] = {itemName = "noodle", amount = 1},
-            [2] = {itemName = "friedseasoning", amount = 1},
-            [3] = {itemName = "egg", amount = 1},
+            {itemName = "noodle", amount = 1},
+            {itemName = "friedseasoning", amount = 1},
+            {itemName = "egg", amount = 1},
         }, -- required items to make
         progressbar = "Making Fried Noodle", -- text to display on progressbar
         progresstime = 15000, -- in milliseconds

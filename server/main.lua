@@ -1,11 +1,19 @@
 local ox_inventory = exports.ox_inventory
 
-ESX.RegisterServerCallback('nz_drink:server:giveItem', function(source, cb, item, amount)
+RegisterNetEvent("nz-restaurant:server:cook", function(items, giveitem)
 	local xPlayer = ESX.GetPlayerFromId(source)
-    if xPlayer.getJob().label ~= config.jobname then return cb(false) end
+    -- if xPlayer.getJob().label ~= config.jobname then return end
 	
-    if xPlayer.canCarryItem(itemm amount) then
-        xPlayer.addInventoryItem(item, amount)
+    if exports.ox_inventory:CanCarryItem(source, item, amount) then
+        local success, response = exports.ox_inventory:AddItem(source, item, amount)
+        if not success then
+            -- if no slots are available, the value will be "inventory_full"
+            lib.notify({
+                title = 'Kantong kamu telalu penuh',
+                description = 'Kosongkan kantong kamu',
+                type = 'error'
+            })
+        end        
     end
     
     lib.notify({
@@ -16,10 +24,21 @@ ESX.RegisterServerCallback('nz_drink:server:giveItem', function(source, cb, item
     
 end)
 
-lib.callback.register('nz_drink:callback:getItems', function(source, item, amount)
-    local item = ox_inventory:Search(source, 'count', item)
-    if not item >= amount then return false end
+lib.callback.register('nz_drink:callback:ingredient', function(source, required)
+    -- if xPlayer.getJob().name ~= config.jobname then return false end
+    local xPlayer = ESX.GetPlayerFromId(source)
+    local hasItems = true
 
-    return true
+    for k, v in pairs(required) do
+        
+        if xPlayer.hasItem(required[k].itemName) ~= nil then
+            hasItems = hasItems and (xPlayer.hasItem(required[k].itemName).count >= required[k].amount)
+        else
+            hasItems = hasItems and false 
+        end
+    end
+
+    print(hasItems)
+    return hasItems
 
 end)

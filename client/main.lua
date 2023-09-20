@@ -1,6 +1,34 @@
 local xPlayer = nil
 
 -- function 
+ProcesesCook = function(item, amount, required, progressbar, progresstime, dictionary, animname)
+    print(json.encode(required))
+    returnValue = lib.callback.await('nz_drink:callback:ingredient', false, required)
+    if not returnValue then return lib.notify({
+        title = 'Kamu kekurangan bahan baku',
+        description = 'Harap siapkan bahan baku terlebih dahulu',
+        type = 'error'
+    }) end
+
+    local ped = PlayerPedId()
+    local playerPed = PlayerPedId()
+    local src = source 
+    if lib.progressBar({
+        duration = progresstime,
+        label = progressbar,
+        useWhileDead = false,
+        canCancel = false,
+        disable = {
+            car = true,
+        },
+        anim = {
+            dict = dictionary,
+            clip = animname
+        },
+    }) then print('Do stuff when complete') else print('Do stuff when cancelled') end    
+
+end
+
 oven = function()
     local Menus = {}
     for k,v in pairs(config.oven) do
@@ -9,11 +37,14 @@ oven = function()
             title = v.label,
             description = v.description,
             image = v.image,
-            serverEvent = 'nz_drink:server:giveItem',
-            args = {
+            -- serverEvent = 'nz_drink:server:giveItem',
+            onSelect = function()
+                ProcesesCook(v.item, v.amount, v.required, v.progressbar, v.progresstime, v.dictionary, v.animname)
+            end,
+            --[[args = {
                 v.item,
                 v.amount
-            }
+            }]]
         }
     end
 
@@ -34,11 +65,14 @@ Prep = function()
             title = v.label,
             description = v.description,
             image = v.image,
-            serverEvent = 'nz_drink:server:giveItem',
-            args = {
+            -- serverEvent = 'nz_drink:server:giveItem',
+            onSelect = function()
+                ProcesesCook(v.item, v.amount, v.required, v.progressbar, v.progresstime, v.dictionary, v.animname)
+            end,
+            --[[args = {
                 v.item,
                 v.amount
-            }
+            }]]
         }
     end
 
