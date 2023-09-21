@@ -259,6 +259,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
     SetupDrinkTarget()
     SetupOvenLocation()
     SetupBossTarget()
+    SetupBlips()
 	ESX.PlayerData = xPlayer
 	ESX.PlayerLoaded = true
 end)
