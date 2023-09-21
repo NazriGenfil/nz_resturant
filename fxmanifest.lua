@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'nz_resturant'
 lua54 'yes'
-version '1.0.0'
+version '1.0.2'
 legacyversion '1.9.1'
 
 shared_scripts{
